@@ -1,4 +1,4 @@
-// 4YouPara — homepage
+// 4YouPara — homepage (rebuild)
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Truck, ShieldCheck, HeartHandshake, Leaf } from "lucide-react";
