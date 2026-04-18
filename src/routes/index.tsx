@@ -1,6 +1,7 @@
 // 4YouPara — homepage (rebuild)
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { ArrowRight, Sparkles, Truck, ShieldCheck, HeartHandshake, Leaf } from "lucide-react";
 import { SiteShell } from "@/components/site/SiteShell";
 import { ProductCard } from "@/components/site/ProductCard";
@@ -23,17 +24,23 @@ export const Route = createFileRoute("/")({
 function HomePage() {
   const featured = products.slice(0, 8);
   const promos = products.filter((p) => p.oldPrice).slice(0, 3);
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const heroImageY = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  const heroTextY = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.3]);
 
   return (
     <SiteShell>
       {/* HERO */}
-      <section className="relative">
+      <section ref={heroRef} className="relative">
         <div className="blob blob-rose w-[520px] h-[520px] -top-20 -right-32 animate-blob" />
         <div className="blob blob-sage w-[460px] h-[460px] top-40 -left-40 animate-blob-2" />
 
         <div className="container mx-auto px-4 relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[78vh] py-10">
             <motion.div
+              style={{ y: heroTextY, opacity: heroOpacity }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -82,6 +89,7 @@ function HomePage() {
             </motion.div>
 
             <motion.div
+              style={{ y: heroImageY }}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
