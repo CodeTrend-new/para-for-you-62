@@ -49,9 +49,13 @@ function ProductPage() {
             className="relative aspect-square rounded-[2rem] overflow-hidden shadow-elevated"
             style={{ background: product.gradient }}
           >
-            <div className="absolute inset-0 flex items-center justify-center text-display text-[14rem] text-white/40">
-              {product.name.charAt(0)}
-            </div>
+            <img
+              src={product.image}
+              alt={product.name}
+              width={1200}
+              height={1200}
+              className="absolute inset-0 h-full w-full object-cover"
+            />
             {product.badge && (
               <span className="absolute top-5 left-5 glass-strong rounded-full px-4 py-1.5 text-xs uppercase tracking-wider text-foreground">
                 {product.badge}
