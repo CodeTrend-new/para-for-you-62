@@ -241,9 +241,14 @@ function HomePage() {
                     className="aspect-[3/4] rounded-2xl overflow-hidden relative shadow-soft"
                     style={{ background: p.gradient }}
                   >
-                    <div className="absolute inset-0 flex items-center justify-center text-display text-6xl text-white/40">
-                      {p.name.charAt(0)}
-                    </div>
+                    <img
+                      src={p.image}
+                      alt={p.name}
+                      loading="lazy"
+                      width={600}
+                      height={800}
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
                     <div className="absolute bottom-0 inset-x-0 p-2 glass-strong">
                       <div className="text-[10px] text-muted-foreground line-through">{p.oldPrice} DH</div>
                       <div className="text-display text-base font-semibold text-foreground">{p.price} DH</div>

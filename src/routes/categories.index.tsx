@@ -41,16 +41,28 @@ function CategoriesPage() {
                 <Link
                   to="/categories/$slug"
                   params={{ slug: c.slug }}
-                  className="group block glass rounded-3xl p-6 hover:shadow-elevated transition-all hover:-translate-y-1"
+                  className="group block glass rounded-3xl overflow-hidden hover:shadow-elevated transition-all hover:-translate-y-1"
                 >
-                  <div className="flex items-start justify-between">
-                    <div className="text-display text-5xl text-foreground/40 group-hover:text-secondary transition-colors">{c.emoji}</div>
-                    <span className="text-xs uppercase tracking-wider text-muted-foreground">{count} produits</span>
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <img
+                      src={c.image}
+                      alt={c.name}
+                      loading="lazy"
+                      width={800}
+                      height={600}
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <span className="absolute top-3 left-3 text-display text-3xl text-foreground/60 drop-shadow-sm">{c.emoji}</span>
+                    <span className="absolute top-3 right-3 text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-background/80 backdrop-blur text-muted-foreground">
+                      {count} produits
+                    </span>
                   </div>
-                  <h3 className="mt-6 text-display text-2xl text-foreground">{c.name}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{c.description}</p>
-                  <div className="mt-4 inline-flex items-center gap-1 text-sm text-secondary font-medium">
-                    Voir les produits <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <div className="p-6">
+                    <h3 className="text-display text-2xl text-foreground">{c.name}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground">{c.description}</p>
+                    <div className="mt-4 inline-flex items-center gap-1 text-sm text-secondary font-medium">
+                      Voir les produits <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </div>
                   </div>
                 </Link>
               </motion.div>
