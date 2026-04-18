@@ -10,7 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PromotionsRouteImport } from './routes/promotions'
+import { Route as PanierRouteImport } from './routes/panier'
 import { Route as MarquesRouteImport } from './routes/marques'
+import { Route as FavorisRouteImport } from './routes/favoris'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as IndexRouteImport } from './routes/index'
@@ -25,9 +27,19 @@ const PromotionsRoute = PromotionsRouteImport.update({
   path: '/promotions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PanierRoute = PanierRouteImport.update({
+  id: '/panier',
+  path: '/panier',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MarquesRoute = MarquesRouteImport.update({
   id: '/marques',
   path: '/marques',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FavorisRoute = FavorisRouteImport.update({
+  id: '/favoris',
+  path: '/favoris',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -75,7 +87,9 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
   '/contact': typeof ContactRoute
+  '/favoris': typeof FavorisRoute
   '/marques': typeof MarquesRoute
+  '/panier': typeof PanierRoute
   '/promotions': typeof PromotionsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/categories/$slug': typeof CategoriesSlugRoute
@@ -87,7 +101,9 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
   '/contact': typeof ContactRoute
+  '/favoris': typeof FavorisRoute
   '/marques': typeof MarquesRoute
+  '/panier': typeof PanierRoute
   '/promotions': typeof PromotionsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/categories/$slug': typeof CategoriesSlugRoute
@@ -100,7 +116,9 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
   '/contact': typeof ContactRoute
+  '/favoris': typeof FavorisRoute
   '/marques': typeof MarquesRoute
+  '/panier': typeof PanierRoute
   '/promotions': typeof PromotionsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/categories/$slug': typeof CategoriesSlugRoute
@@ -114,7 +132,9 @@ export interface FileRouteTypes {
     | '/'
     | '/a-propos'
     | '/contact'
+    | '/favoris'
     | '/marques'
+    | '/panier'
     | '/promotions'
     | '/blog/$slug'
     | '/categories/$slug'
@@ -126,7 +146,9 @@ export interface FileRouteTypes {
     | '/'
     | '/a-propos'
     | '/contact'
+    | '/favoris'
     | '/marques'
+    | '/panier'
     | '/promotions'
     | '/blog/$slug'
     | '/categories/$slug'
@@ -138,7 +160,9 @@ export interface FileRouteTypes {
     | '/'
     | '/a-propos'
     | '/contact'
+    | '/favoris'
     | '/marques'
+    | '/panier'
     | '/promotions'
     | '/blog/$slug'
     | '/categories/$slug'
@@ -151,7 +175,9 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AProposRoute: typeof AProposRoute
   ContactRoute: typeof ContactRoute
+  FavorisRoute: typeof FavorisRoute
   MarquesRoute: typeof MarquesRoute
+  PanierRoute: typeof PanierRoute
   PromotionsRoute: typeof PromotionsRoute
   BlogSlugRoute: typeof BlogSlugRoute
   CategoriesSlugRoute: typeof CategoriesSlugRoute
@@ -169,11 +195,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PromotionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/panier': {
+      id: '/panier'
+      path: '/panier'
+      fullPath: '/panier'
+      preLoaderRoute: typeof PanierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/marques': {
       id: '/marques'
       path: '/marques'
       fullPath: '/marques'
       preLoaderRoute: typeof MarquesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/favoris': {
+      id: '/favoris'
+      path: '/favoris'
+      fullPath: '/favoris'
+      preLoaderRoute: typeof FavorisRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -239,7 +279,9 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AProposRoute: AProposRoute,
   ContactRoute: ContactRoute,
+  FavorisRoute: FavorisRoute,
   MarquesRoute: MarquesRoute,
+  PanierRoute: PanierRoute,
   PromotionsRoute: PromotionsRoute,
   BlogSlugRoute: BlogSlugRoute,
   CategoriesSlugRoute: CategoriesSlugRoute,
