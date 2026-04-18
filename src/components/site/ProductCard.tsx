@@ -27,11 +27,14 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
           className="relative aspect-square overflow-hidden"
           style={{ background: product.gradient }}
         >
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-display text-7xl text-white/40 select-none transition-transform duration-700 group-hover:scale-110">
-              {product.name.charAt(0)}
-            </div>
-          </div>
+          <img
+            src={product.image}
+            alt={product.name}
+            loading="lazy"
+            width={800}
+            height={800}
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
 
           {product.badge && (
             <span className={`absolute top-3 left-3 text-[10px] uppercase tracking-wider px-3 py-1 rounded-full font-medium ${badgeStyles[product.badge]}`}>
