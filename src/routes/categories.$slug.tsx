@@ -76,14 +76,14 @@ function CategoryPage() {
   const setParam = (patch: Partial<{ sort: string; brand: string; badge: string; max: number }>) => {
     navigate({
       params: { slug: cat.slug },
-      search: (prev) => ({ ...prev, ...patch }) as never,
+      search: ((prev: Record<string, unknown>) => ({ ...prev, ...patch })) as never,
     });
   };
 
   const resetFilters = () => {
     navigate({
       params: { slug: cat.slug },
-      search: () => ({ sort: "pop", brand: "", badge: "", max: 0 }) as never,
+      search: (() => ({ sort: "pop", brand: "", badge: "", max: 0 })) as never,
     });
   };
 
