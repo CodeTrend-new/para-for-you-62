@@ -136,7 +136,7 @@ export function Header() {
                   </span>
                 )}
               </button>
-              <ThemeToggle />
+              
               <button
                 onClick={() => setOpen((v) => !v)}
                 className="lg:hidden h-9 w-9 inline-flex items-center justify-center rounded-full hover:bg-rose-soft/40 text-foreground"
