@@ -3,7 +3,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Menu, X, Search, Heart, ShoppingBag } from "lucide-react";
 import { products } from "@/data/products";
 import { useShop } from "@/contexts/ShopContext";
-import { ThemeToggle } from "./ThemeToggle";
 import { CartDrawer } from "./CartDrawer";
 import logo from "@/assets/logo-4youpara.jpeg";
 
