@@ -3,6 +3,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Menu, X, Search, Heart, ShoppingBag } from "lucide-react";
 import { products } from "@/data/products";
 import { useShop } from "@/contexts/ShopContext";
+import { ThemeToggle } from "./ThemeToggle";
+import { CartDrawer } from "./CartDrawer";
 import logo from "@/assets/logo-4youpara.jpeg";
 
 const nav = [
@@ -19,6 +21,7 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
   const [query, setQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   const { cartCount, favoritesCount } = useShop();
@@ -122,8 +125,8 @@ export function Header() {
                   </span>
                 )}
               </Link>
-              <Link
-                to="/panier"
+              <button
+                onClick={() => setCartOpen(true)}
                 className="relative inline-flex h-9 w-9 items-center justify-center rounded-full hover:bg-rose-soft/40 transition-colors text-foreground/70 hover:text-foreground"
                 aria-label="Panier"
               >
@@ -133,7 +136,8 @@ export function Header() {
                     {cartCount}
                   </span>
                 )}
-              </Link>
+              </button>
+              <ThemeToggle />
               <button
                 onClick={() => setOpen((v) => !v)}
                 className="lg:hidden h-9 w-9 inline-flex items-center justify-center rounded-full hover:bg-rose-soft/40 text-foreground"
@@ -241,6 +245,8 @@ export function Header() {
           </div>
         </div>
       )}
+
+      <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
     </>
   );
 }
