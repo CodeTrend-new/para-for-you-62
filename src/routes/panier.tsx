@@ -124,9 +124,12 @@ function CartPage() {
                   <span>{cartTotal + shipping} DH</span>
                 </div>
               </div>
-              <button className="mt-6 w-full gradient-button text-white rounded-full py-3 text-sm font-medium shadow-soft hover:shadow-glow-rose transition-all">
-                Passer commande
-              </button>
+              <Link
+                to="/checkout"
+                className="mt-6 w-full gradient-button text-white rounded-full py-3 text-sm font-medium shadow-soft hover:shadow-glow-rose transition-all inline-flex items-center justify-center gap-2"
+              >
+                Passer commande <ArrowRight className="h-4 w-4" />
+              </Link>
               <Link to="/categories" className="mt-3 block text-center text-xs text-muted-foreground hover:text-foreground">
                 Continuer mes achats
               </Link>

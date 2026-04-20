@@ -239,9 +239,29 @@ export const products: Product[] = [
     gradient: "linear-gradient(135deg, oklch(0.88 0.07 80), oklch(0.85 0.06 50))", image: p32 },
 ];
 
-export const brands = [
-  "La Roche-Posay", "Avène", "Nuxe", "Bioderma", "Vichy", "Mustela",
-  "Klorane", "Caudalie", "Eucerin", "Filorga", "Talika", "René Furterer",
+export type Brand = {
+  name: string;
+  origin: string;
+  tagline: string;
+  signature: string;
+  gradient: string;
+  accent: string;
+  monogram: string;
+};
+
+export const brands: Brand[] = [
+  { name: "La Roche-Posay", origin: "France", tagline: "Dermatologie de référence", signature: "Eau thermale apaisante", gradient: "linear-gradient(135deg, oklch(0.92 0.04 240 / 0.7), oklch(0.85 0.06 220 / 0.5))", accent: "oklch(0.55 0.12 240)", monogram: "LRP" },
+  { name: "Avène", origin: "France", tagline: "Peaux sensibles depuis 1990", signature: "Eau thermale d'Avène", gradient: "linear-gradient(135deg, oklch(0.93 0.03 200 / 0.7), oklch(0.88 0.05 180 / 0.5))", accent: "oklch(0.6 0.08 200)", monogram: "AV" },
+  { name: "Nuxe", origin: "France", tagline: "Naturalité botanique", signature: "Huile Prodigieuse®", gradient: "linear-gradient(135deg, oklch(0.92 0.06 70 / 0.7), oklch(0.86 0.08 50 / 0.5))", accent: "oklch(0.6 0.1 65)", monogram: "NX" },
+  { name: "Bioderma", origin: "France", tagline: "Biologie au service de la peau", signature: "Sensibio H2O", gradient: "linear-gradient(135deg, oklch(0.93 0.04 160 / 0.7), oklch(0.86 0.06 145 / 0.5))", accent: "oklch(0.55 0.09 150)", monogram: "BD" },
+  { name: "Vichy", origin: "France", tagline: "Force minérale revitalisante", signature: "Eau volcanique", gradient: "linear-gradient(135deg, oklch(0.91 0.05 260 / 0.7), oklch(0.84 0.07 240 / 0.5))", accent: "oklch(0.5 0.13 260)", monogram: "VC" },
+  { name: "Mustela", origin: "France", tagline: "Bébé & maternité", signature: "Avocat Perseose®", gradient: "linear-gradient(135deg, oklch(0.94 0.04 25 / 0.7), oklch(0.88 0.06 15 / 0.5))", accent: "oklch(0.65 0.1 20)", monogram: "MS" },
+  { name: "Klorane", origin: "France", tagline: "Botanique capillaire", signature: "Shampooing à l'avoine", gradient: "linear-gradient(135deg, oklch(0.93 0.05 95 / 0.7), oklch(0.86 0.07 80 / 0.5))", accent: "oklch(0.55 0.1 95)", monogram: "KL" },
+  { name: "Caudalie", origin: "Bordeaux, France", tagline: "Vinothérapie® anti-âge", signature: "Resvératrol-lift", gradient: "linear-gradient(135deg, oklch(0.9 0.06 340 / 0.7), oklch(0.82 0.08 330 / 0.5))", accent: "oklch(0.5 0.15 340)", monogram: "CD" },
+  { name: "Eucerin", origin: "Allemagne", tagline: "Science dermatologique", signature: "Hyaluron-Filler", gradient: "linear-gradient(135deg, oklch(0.92 0.04 50 / 0.7), oklch(0.85 0.06 35 / 0.5))", accent: "oklch(0.55 0.12 45)", monogram: "EU" },
+  { name: "Filorga", origin: "France", tagline: "Médi-cosmétique anti-âge", signature: "NCEF Reverse", gradient: "linear-gradient(135deg, oklch(0.9 0.04 25 / 0.7), oklch(0.82 0.07 15 / 0.5))", accent: "oklch(0.5 0.14 25)", monogram: "FG" },
+  { name: "Talika", origin: "France", tagline: "Beauté par la lumière", signature: "Lipocils", gradient: "linear-gradient(135deg, oklch(0.91 0.05 310 / 0.7), oklch(0.83 0.08 300 / 0.5))", accent: "oklch(0.5 0.15 310)", monogram: "TK" },
+  { name: "René Furterer", origin: "Provence, France", tagline: "Rituels capillaires", signature: "Complexe 5", gradient: "linear-gradient(135deg, oklch(0.92 0.05 130 / 0.7), oklch(0.85 0.07 115 / 0.5))", accent: "oklch(0.5 0.1 130)", monogram: "RF" },
 ];
 
 export type BlogPost = {

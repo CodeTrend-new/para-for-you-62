@@ -150,7 +150,7 @@ function HomePage() {
           <div className="flex gap-12 animate-marquee whitespace-nowrap" style={{ width: "max-content" }}>
             {[...brands, ...brands].map((b, i) => (
               <span key={i} className="text-display text-2xl text-foreground/40 hover:text-foreground transition-colors">
-                {b}
+                {b.name}
               </span>
             ))}
           </div>
