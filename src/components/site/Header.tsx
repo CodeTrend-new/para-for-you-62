@@ -3,7 +3,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Menu, X, Search, Heart, ShoppingBag } from "lucide-react";
 import { products } from "@/data/products";
 import { useShop } from "@/contexts/ShopContext";
-import { ThemeToggle } from "./ThemeToggle";
 import { CartDrawer } from "./CartDrawer";
 import logo from "@/assets/logo-4youpara.jpeg";
 
@@ -137,7 +136,7 @@ export function Header() {
                   </span>
                 )}
               </button>
-              <ThemeToggle />
+              
               <button
                 onClick={() => setOpen((v) => !v)}
                 className="lg:hidden h-9 w-9 inline-flex items-center justify-center rounded-full hover:bg-rose-soft/40 text-foreground"
