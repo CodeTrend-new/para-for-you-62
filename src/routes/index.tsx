@@ -5,9 +5,11 @@ import { useRef } from "react";
 import { ArrowRight, Sparkles, Truck, ShieldCheck, HeartHandshake, Leaf } from "lucide-react";
 import { SiteShell } from "@/components/site/SiteShell";
 import { ProductCard } from "@/components/site/ProductCard";
+import { CollectionShowcase } from "@/components/site/CollectionShowcase";
 import { categories, products, blogPosts, brands } from "@/data/products";
 import logo from "@/assets/logo-4youpara.jpeg";
 import heroImg from "@/assets/hero-botanical.jpg";
+import kbeautyImg from "@/assets/kbeauty-hero.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
