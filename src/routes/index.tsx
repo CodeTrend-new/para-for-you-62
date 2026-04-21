@@ -5,9 +5,11 @@ import { useRef } from "react";
 import { ArrowRight, Sparkles, Truck, ShieldCheck, HeartHandshake, Leaf } from "lucide-react";
 import { SiteShell } from "@/components/site/SiteShell";
 import { ProductCard } from "@/components/site/ProductCard";
+import { CollectionShowcase } from "@/components/site/CollectionShowcase";
 import { categories, products, blogPosts, brands } from "@/data/products";
 import logo from "@/assets/logo-4youpara.jpeg";
 import heroImg from "@/assets/hero-botanical.jpg";
+import kbeautyImg from "@/assets/kbeauty-hero.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,6 +26,7 @@ export const Route = createFileRoute("/")({
 function HomePage() {
   const featured = products.slice(0, 8);
   const promos = products.filter((p) => p.oldPrice).slice(0, 3);
+  const kbeautyProducts = products.filter((p) => p.category === "visage").slice(0, 8);
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroImageY = useTransform(scrollYProgress, [0, 1], [0, 120]);
@@ -212,6 +215,18 @@ function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* K-BEAUTY SHOWCASE */}
+      <CollectionShowcase
+        eyebrow="Collection K-Beauty"
+        title="Le rituel glass-skin"
+        description="Sérums hydratants, essences et soins venus de Corée pour une peau lumineuse, fraîche et repulpée."
+        ctaLabel="Explorer K-Beauty"
+        ctaTo="/categories"
+        image={kbeautyImg}
+        products={kbeautyProducts}
+        accent="rose"
+      />
 
       {/* PROMO BANNER */}
       <section className="py-20">
