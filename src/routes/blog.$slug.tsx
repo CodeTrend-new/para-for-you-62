@@ -2,7 +2,6 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { SiteShell } from "@/components/site/SiteShell";
 import { blogPosts } from "@/data/products";
-import blogImg from "@/assets/blog-conseils.jpg";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {
@@ -43,7 +42,7 @@ function BlogPostPage() {
         </header>
 
         <div className="mt-10 aspect-[16/9] rounded-3xl overflow-hidden shadow-elevated">
-          <img src={blogImg} alt="" className="w-full h-full object-cover" loading="lazy" width={1280} height={896} />
+          <img src={post.image} alt={post.title} className="w-full h-full object-cover" loading="lazy" width={1280} height={896} />
         </div>
 
         <div className="mt-12 prose prose-lg max-w-none text-foreground">

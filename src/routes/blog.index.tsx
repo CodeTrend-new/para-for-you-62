@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { SiteShell } from "@/components/site/SiteShell";
 import { blogPosts } from "@/data/products";
-import blogImg from "@/assets/blog-conseils.jpg";
 
 export const Route = createFileRoute("/blog/")({
   head: () => ({
@@ -34,7 +33,7 @@ function BlogPage() {
           className="group mt-12 grid lg:grid-cols-2 gap-8 glass-strong rounded-3xl overflow-hidden shadow-elevated hover:shadow-elevated transition-all"
         >
           <div className="aspect-[4/3] lg:aspect-auto overflow-hidden">
-            <img src={blogImg} alt="" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" width={1280} height={896} />
+            <img src={first.image} alt={first.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" width={1280} height={896} />
           </div>
           <div className="p-8 lg:p-12 flex flex-col justify-center">
             <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-muted-foreground">
@@ -64,8 +63,8 @@ function BlogPage() {
                 params={{ slug: post.slug }}
                 className="group block glass rounded-3xl overflow-hidden hover:shadow-elevated hover:-translate-y-1 transition-all h-full"
               >
-                <div className="aspect-[4/3] gradient-hero relative overflow-hidden">
-                  <div className="absolute inset-0 flex items-center justify-center text-display text-7xl text-white/40">✿</div>
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" width={1280} height={896} />
                 </div>
                 <div className="p-5">
                   <div className="text-[10px] uppercase tracking-wider text-secondary">{post.category}</div>
