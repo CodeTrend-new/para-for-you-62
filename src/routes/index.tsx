@@ -1,15 +1,20 @@
 // 4YouPara — homepage (rebuild)
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
 import { ArrowRight, Sparkles, Truck, ShieldCheck, HeartHandshake, Leaf } from "lucide-react";
 import { SiteShell } from "@/components/site/SiteShell";
 import { ProductCard } from "@/components/site/ProductCard";
 import { CollectionShowcase } from "@/components/site/CollectionShowcase";
 import { categories, products, blogPosts, brands } from "@/data/products";
 import logo from "@/assets/logo-4youpara.jpeg";
-import heroImg from "@/assets/hero-botanical.jpg";
+import hero1 from "@/assets/hero-1.jpg";
+import hero2 from "@/assets/hero-2.jpg";
+import hero3 from "@/assets/hero-3.jpg";
+import hero4 from "@/assets/hero-4.jpg";
 import kbeautyImg from "@/assets/kbeauty-hero.jpg";
+
+const heroSlides = [hero1, hero2, hero3, hero4];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -32,6 +37,11 @@ function HomePage() {
   const heroImageY = useTransform(scrollYProgress, [0, 1], [0, 120]);
   const heroTextY = useTransform(scrollYProgress, [0, 1], [0, -60]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.3]);
+  const [slide, setSlide] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setSlide((s) => (s + 1) % heroSlides.length), 4500);
+    return () => clearInterval(id);
+  }, []);
 
   return (
     <SiteShell>
@@ -99,13 +109,33 @@ function HomePage() {
               className="relative"
             >
               <div className="relative aspect-square max-w-xl mx-auto">
-                <motion.div
-                  animate={{ rotate: [0, 6, 0] }}
-                  transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute inset-0 rounded-[2.5rem] overflow-hidden shadow-elevated"
-                >
-                  <img src={heroImg} alt="Soins botaniques 4YouPara" className="w-full h-full object-cover" width={1536} height={1280} />
-                </motion.div>
+                <div className="absolute inset-0 rounded-[2.5rem] overflow-hidden shadow-elevated">
+                  <AnimatePresence mode="sync">
+                    <motion.img
+                      key={slide}
+                      src={heroSlides[slide]}
+                      alt="Soins beauté 4YouPara"
+                      className="absolute inset-0 w-full h-full object-cover"
+                      width={1920}
+                      height={900}
+                      initial={{ opacity: 0, scale: 1.05 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.98 }}
+                      transition={{ duration: 1.1, ease: "easeInOut" }}
+                    />
+                  </AnimatePresence>
+                  {/* slide indicators */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                    {heroSlides.map((_, i) => (
+                      <button
+                        key={i}
+                        aria-label={`Slide ${i + 1}`}
+                        onClick={() => setSlide(i)}
+                        className={`h-1.5 rounded-full transition-all ${i === slide ? "w-8 bg-white" : "w-3 bg-white/50"}`}
+                      />
+                    ))}
+                  </div>
+                </div>
 
                 <motion.div
                   animate={{ y: [0, -12, 0] }}
