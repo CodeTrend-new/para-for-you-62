@@ -14,15 +14,15 @@ export function SiteShell({ children }: { children: ReactNode }) {
 
         {/* Botanical image pattern (very subtle) */}
         <div
-          className="absolute inset-0 opacity-[0.18]"
+          className="absolute inset-0 opacity-[0.35]"
           style={{
             backgroundImage: `url(${bgPattern})`,
-            backgroundSize: "640px 640px",
+            backgroundSize: "420px 420px",
             backgroundRepeat: "repeat",
             maskImage:
-              "radial-gradient(ellipse at center, black 35%, transparent 90%)",
+              "radial-gradient(ellipse at center, black 50%, transparent 95%)",
             WebkitMaskImage:
-              "radial-gradient(ellipse at center, black 35%, transparent 90%)",
+              "radial-gradient(ellipse at center, black 50%, transparent 95%)",
           }}
         />
 
