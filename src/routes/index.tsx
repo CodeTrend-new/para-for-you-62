@@ -266,7 +266,7 @@ function HomePage() {
         title="Protection lumineuse"
         description="Crèmes SPF, brumes et after-sun pour protéger et sublimer votre peau, du quotidien aux journées ensoleillées."
         ctaLabel="Explorer la protection solaire"
-        ctaTo="/categories/$slug"
+        ctaTo="/categories"
         image={solaireImg}
         products={solaireProducts.length ? solaireProducts : kbeautyProducts}
         accent="sage"
