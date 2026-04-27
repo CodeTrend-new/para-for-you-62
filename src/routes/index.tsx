@@ -13,6 +13,7 @@ import hero2 from "@/assets/hero-2.jpg";
 import hero3 from "@/assets/hero-3.jpg";
 import hero4 from "@/assets/hero-4.jpg";
 import kbeautyImg from "@/assets/kbeauty-hero.jpg";
+import solaireImg from "@/assets/collection-solaire.jpg";
 
 const heroSlides = [hero1, hero2, hero3, hero4];
 
@@ -32,6 +33,7 @@ function HomePage() {
   const featured = products.slice(0, 8);
   const promos = products.filter((p) => p.oldPrice).slice(0, 3);
   const kbeautyProducts = products.filter((p) => p.category === "visage").slice(0, 8);
+  const solaireProducts = products.filter((p) => p.category === "solaire").slice(0, 8);
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroImageY = useTransform(scrollYProgress, [0, 1], [0, 120]);
@@ -256,6 +258,18 @@ function HomePage() {
         image={kbeautyImg}
         products={kbeautyProducts}
         accent="rose"
+      />
+
+      {/* PROTECTION SOLAIRE SHOWCASE */}
+      <CollectionShowcase
+        eyebrow="Collection Solaire"
+        title="Protection lumineuse"
+        description="Crèmes SPF, brumes et after-sun pour protéger et sublimer votre peau, du quotidien aux journées ensoleillées."
+        ctaLabel="Explorer la protection solaire"
+        ctaTo="/categories"
+        image={solaireImg}
+        products={solaireProducts.length ? solaireProducts : kbeautyProducts}
+        accent="sage"
       />
 
       {/* PROMO BANNER */}
